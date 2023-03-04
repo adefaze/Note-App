@@ -1,11 +1,17 @@
 <script setup>
 import { onMounted } from "vue";
-import { initModals } from "flowbite";
+// import { initModals } from "flowbite";
 
 // initialize components based on data attribute selectors
-onMounted(() => {
-  initModals();
-});
+// onMounted(() => {
+//   initModals();
+// });
+
+
+import {ref} from "vue";
+
+const showModal = ref(false);
+
 </script>
 
 
@@ -15,7 +21,7 @@ onMounted(() => {
       <div class="flex justify-between p-4">
         <h2 class="text-3xl">Notes</h2>
 
-        <button
+        <button @click="showModal = true"
           id="button"
           data-modal-toggle="modal"
           data-modal-target="modal"
@@ -85,13 +91,13 @@ onMounted(() => {
         >Here are the biggest enterprise technology acquisitions of 2021 </p>
         <p class="absolute inset-x-0 bottom-0  h-8 text-gray-700 pl-6 text-xs">12/06/2023</p>
       </div>
-      
+
     </div>
   </div>
   <!-- EndCards -->
 
   <!-- Modal-->
-  <div
+  <div v-if="showModal"
       id="modal"
       tabindex="-1"
       aria-hidden="true"
